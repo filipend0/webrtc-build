@@ -11,8 +11,8 @@ jobs:
         name:
           - windows_x86_64
           - windows_arm64
-          python_version:
-            - "3.11"
+        python_version:
+          - "3.11"
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@v4
