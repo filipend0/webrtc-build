@@ -12,15 +12,13 @@ jobs:
           - windows_x86_64
           - windows_arm64
     runs-on: windows-2019
-    env:
-      PYTHON_VERSION: "3.11"
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+      - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          ref: daily
+          python-version: "3.11"
+      - run: python3 --version
       - name: Disk Cleanup
         run: |
           Get-PSDrive
