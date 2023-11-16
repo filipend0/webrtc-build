@@ -23,10 +23,11 @@ jobs:
       PYTHON_VERSION: "3.11"
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+      - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: "3.11"
+      - run: python3 --version
       - name: Disk Cleanup
         run: |
           Get-PSDrive
@@ -66,11 +67,11 @@ jobs:
         name:
           - macos_arm64
           - ios
-    runs-on: macOS-11.0
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v4
-      - name: Select Xcode 13.0
-        run: sudo xcode-select --switch /Applications/Xcode_13.0.app/Contents/Developer
+      - name: Select Xcode 14.3.1
+        run: sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer
       - run: brew install ninja
       - name: Build ${{ matrix.name }} for macos
         if: matrix.name == 'macos_arm64'

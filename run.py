@@ -206,6 +206,8 @@ PATCHES = {
         'ssl_verify_callback_with_native_handle.patch',
         'ios_build.patch',
         'ios_proxy.patch',
+        'h265.patch',
+        'h265_ios.patch',
     ],
     'android': [
         'add_deps.patch',
@@ -217,6 +219,8 @@ PATCHES = {
         'android_simulcast.patch',
         'android_hardware_video_encoder.patch',
         'android_proxy.patch',
+        'h265.patch',
+        'h265_android.patch',
     ],
     'raspberry-pi-os_armv6': [
         'nacl_armv6_2.patch',
@@ -267,7 +271,7 @@ PATCHES = {
 def apply_patch(patch, dir, depth):
     with cd(dir):
         logging.info(f'patch -p{depth} < {patch}')
-        if platform.system() == 'Windows':
+        if platform.system() in ['Windows']:
             cmd(['git', 'apply', f'-p{depth}',
                 '--ignore-space-change', '--ignore-whitespace', '--whitespace=nowarn',
                  patch])
@@ -761,9 +765,9 @@ def generate_version_info(webrtc_src_dir, webrtc_package_dir):
         (['.'], ''),
         (['build'], 'BUILD'),
         (['buildtools'], 'BUILDTOOLS'),
-        (['third_party', 'libc++', 'src'], 'WEBRTC_SRC_THIRD_PARTY_LIBCXX_SRC'),
-        (['third_party', 'libc++abi', 'src'], 'WEBRTC_SRC_THIRD_PARTY_LIBCXXABI_SRC'),
-        (['third_party', 'libunwind', 'src'], 'WEBRTC_SRC_THIRD_PARTY_LIBUNWIND_SRC'),
+        (['third_party', 'libc++', 'src'], 'THIRD_PARTY_LIBCXX_SRC'),
+        (['third_party', 'libc++abi', 'src'], 'THIRD_PARTY_LIBCXXABI_SRC'),
+        (['third_party', 'libunwind', 'src'], 'THIRD_PARTY_LIBUNWIND_SRC'),
         (['third_party'], 'THIRD_PARTY'),
         (['tools'], 'TOOLS'),
     ]
