@@ -215,6 +215,7 @@ PATCHES = {
         "h265.patch",
         "h265_ios.patch",
         "arm_neon_sve_bridge.patch",
+        "revert_asm_changes.patch",
     ],
     "ios": [
         "add_deps.patch",
@@ -229,6 +230,7 @@ PATCHES = {
         "h265.patch",
         "h265_ios.patch",
         "arm_neon_sve_bridge.patch",
+        "revert_asm_changes.patch",
     ],
     "android": [
         "add_deps.patch",
